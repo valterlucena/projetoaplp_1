@@ -46,6 +46,8 @@ string crip(string frase, int chave);
 string descrip(string frase, int chave);
 
 int main() {
+	
+	
     telaInicial();
     int opcao;
 	cin >> opcao;
@@ -96,13 +98,23 @@ int limiteIndice() {
 }
 
 string escolheFraseFacil() {
-	string saida = perguntasFacil[limiteIndice()];
+	int lim = limiteIndice();
+	string saida = perguntasFacil[lim];
 	return saida;
 }
 
+int limiteChave() {
+	int chave = indiceRandomico();
+	while (chave >= 26) {
+		chave = indiceRandomico();
+	}
+	return chave;
+}
+
 void imprimeCharadaFacil() {
-	cout << crip(escolheFraseFacil(), limiteIndice());
-	//cout << escolheFraseFacil();
+	int ch = limiteChave();
+
+	cout << crip(escolheFraseFacil(), ch) << endl;
 }
 
 void regras() {
